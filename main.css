@@ -10,7 +10,7 @@ body {
 
 .fill-width {
     height: 30px;
-    width: 1000px;
+    width: 100%;
     background-color: #333333;
     color: #dddddd;
     border: none;
