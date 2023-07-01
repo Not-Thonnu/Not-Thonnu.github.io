@@ -1,6 +1,7 @@
 body {
     background-color: #333333;
     color: #dddddd;
+    font-family: Georgia, serif;
 }
 
 .heading {
@@ -14,6 +15,12 @@ body {
     background-color: #333333;
     color: #dddddd;
     border: none;
+}
+
+@media (any-pointer: coarse) {
+    .fill-width {
+        width: 100px;
+    }
 }
 
 .button {
