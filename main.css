@@ -28,3 +28,12 @@ body {
     color: #dddddd;
     border: none;
 }
+
+table td {
+    padding-left: 25px;
+}
+
+table th {
+    padding-left: 25px;
+    text-align: left;
+}
