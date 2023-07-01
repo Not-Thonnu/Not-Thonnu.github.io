@@ -392,7 +392,11 @@ var inputHandler = function (e) {
 }
 
 var uppercaseFirstLetter = function (s) {
-    return s[0].toUpperCase() + s.slice(1).toLowerCase();
+    if (s != "") {
+        return s[0].toUpperCase() + s.slice(1).toLowerCase();
+    } else {
+        return "No-op"
+    }
 }
 
 var copyLink = function () {
