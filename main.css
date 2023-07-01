@@ -1,0 +1,23 @@
+body {
+    background-color: #333333;
+    color: #dddddd;
+}
+
+.heading {
+    font-size: 60px;
+    vertical-align: text-top;
+}
+
+.fill-width {
+    height: 30px;
+    width: 1000px;
+    background-color: #333333;
+    color: #dddddd;
+    border: none;
+}
+
+.button {
+    background-color: #333333;
+    color: #dddddd;
+    border: none;
+}
