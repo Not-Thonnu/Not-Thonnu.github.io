@@ -17,12 +17,6 @@ body {
     border: none;
 }
 
-@media (any-pointer: coarse) {
-    .fill-width {
-        width: 100px;
-    }
-}
-
 .button {
     background-color: #333333;
     color: #dddddd;
