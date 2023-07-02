@@ -46,6 +46,20 @@ table th {
     vertical-align: top;
 }
 
+.link-button {
+    background-color: #333333;
+    color: #333333;
+    border: none;
+    height: 50px;
+    width: 65px;
+    background-image: url('run/link.svg'); 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    padding-left: 20px; 
+    background-size: cover;
+    vertical-align: top;
+}
+
 a {
     color: #cccccc
 }
