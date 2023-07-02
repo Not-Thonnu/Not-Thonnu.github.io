@@ -1,6 +1,6 @@
-var table = document.getElementById("table");
+const table = document.getElementById("table");
 
-var d = new Map();
+let d = new Map();
 
 d.set('"', 'String literal');
 d.set("'", 'One-character string literal');
@@ -319,12 +319,12 @@ d.set('µ!', 'Reverse stack');
 d.set('µÑ', 'Adjacent group by');
 d.set('µñ', 'Single function adjacent group by');
 
-var i = 1;
+let i = 1;
 
-for (var [key, value] of d.entries()) {
-    var row = table.insertRow(i);
-    var el = row.insertCell(0);
-    var desc = row.insertCell(1);
+for (let [key, value] of d.entries()) {
+    let row = table.insertRow(i);
+    let el = row.insertCell(0);
+    let desc = row.insertCell(1);
     el.innerHTML = "<code>" + key + "</code>";
     desc.innerHTML = value;
     i += 1;
