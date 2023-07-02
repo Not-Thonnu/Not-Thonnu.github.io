@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head>
+      <title>Thunno 2 Online Interpreter</title>
+      <link rel="stylesheet" href="../main.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="https://cdn.jsdelivr.net/pyodide/v0.23.3/full/pyodide.js"></script>
+  </head>
+  <body>
+    <h1 class="heading"><a href="https://github.com/Thunno/Thunno2"><img src="../thunno_logo.svg" width=50 alt="Thunno 2" /></a> Online Interpreter <input type="button" onclick="javascript:button_clicked()" value="     " class="run-button" /></h1>
+    <h3>Flags</h3>
+    <input type="text" id="flags" class="fill-width" size="50" />
+    <h3>Code</h3>
+    <input type="text" id="code" class="fill-width" size="50" />
+    <h3>Input</h3>
+    <input type="text" id="input" class="fill-width" size="50" />
+    <h3>Output</h3>
+    <pre><code id="output"></code></pre>
+    <script src="main.js"></script>
+  </body>
+</html>

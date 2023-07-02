@@ -31,3 +31,16 @@ table th {
     padding-left: 25px;
     text-align: left;
 }
+
+.run-button {
+    background-color: #333333;
+    color: #333333;
+    border: none;
+    height: 50px;
+    width: 41px;
+    background-image: url('run/run.png'); 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    padding-left: 20px; 
+    background-size: cover;
+}
