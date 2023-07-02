@@ -43,8 +43,13 @@ table th {
     background-position: center; 
     padding-left: 20px; 
     background-size: cover;
+    vertical-align: top;
 }
 
 a {
     color: #cccccc
+}
+
+textarea {
+  resize: none;
 }
