@@ -413,7 +413,7 @@ function uppercaseFirstLetter (s) {
 function copyLink () {
   let input = document.getElementById("textbox").value;
   let url =
-    "https://Not-Thonnu.github.io/index.html?input=" +
+    "https://Not-Thonnu.github.io/verbose/index.html?input=" +
     encodeURIComponent(input);
   navigator.clipboard.writeText(url);
   document.getElementById("copyButton").value = "Copied!";
