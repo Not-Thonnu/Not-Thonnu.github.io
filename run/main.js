@@ -81,18 +81,32 @@ async function get_link() {
   svg.innerHTML = old;
 }
 
-function adjustTextareaHeight() {
-  var textarea = document.getElementById('input');
-  textarea.style.height = 'auto';
-  textarea.style.height = textarea.scrollHeight + 'px';
-}
-
 function getBytecount() {
   // TODO: make accurate
   bytecount.innerText = '' + document.getElementById("code").value.length;
 }
 
+function adjustTextareaHeight1() {
+  var textarea = document.getElementById('input');
+  textarea.style.height = 'auto';
+  textarea.style.height = textarea.scrollHeight + 'px';
+}
+
+function adjustTextareaHeight2() {
+  var textarea = document.getElementById('flags');
+  textarea.style.height = 'auto';
+  textarea.style.height = textarea.scrollHeight + 'px';
+}
+
+function adjustTextareaHeight3() {
+  var textarea = document.getElementById('code');
+  textarea.style.height = 'auto';
+  textarea.style.height = textarea.scrollHeight + 'px';
+  getBytecount();
+}
+
 getBytecount();
 
-document.getElementById("input").addEventListener("input", adjustTextareaHeight);
-document.getElementById("code").addEventListener("input", getBytecount);
+document.getElementById("input").addEventListener("input", adjustTextareaHeight1);
+document.getElementById("flags").addEventListener("input", adjustTextareaHeight2);
+document.getElementById("code").addEventListener("input", adjustTextareaHeight3);
