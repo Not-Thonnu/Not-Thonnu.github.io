@@ -9,12 +9,15 @@
   <body>
     <h1 class="heading"><a href="https://github.com/Thunno/Thunno2"><img src="../thunno_logo.svg" width=50 alt="Thunno 2" /></a> Online Interpreter &nbsp; <input type="button" onclick="javascript:button_clicked()" value="     " class="run-button" /> &nbsp; <el id="svg"><input type="button" onclick="javascript:get_link()" value="     " class="link-button" /></el></h1>
     <h3>Flags</h3>
-    <input type="text" id="flags" class="fill-width" size="50" />
-    <h3>Code</h3>
-    <input type="text" id="code" class="fill-width" size="50" />
+    <!-- <input type="text" id="flags" class="fill-width" size="50" /> -->
+    <code><textarea id="flags" class="fill-width" size="50"></textarea></code>
+    <h3>Code (<code id="bytecount">0</code> bytes)</h3>
+    <!-- <input type="text" id="code" class="fill-width" size="50" /> -->
+    <code><textarea id="code" class="fill-width" size="50"></textarea></code>
+    <code></code>
     <h3>Input</h3>
     <!-- <input type="text" id="input" class="fill-width" size="50" /> -->
-    <textarea id="input" class="fill-width"></textarea>
+    <code><textarea id="input" class="fill-width" size="50"></textarea></code>
     <h3>Output</h3>
     <pre><code id="output"></code></pre>
     <script src="main.js"></script>

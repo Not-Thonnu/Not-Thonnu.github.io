@@ -1,5 +1,7 @@
 var running = false;
 
+const bytecount = document.getElementById("bytecount");
+
 async function run(code, inputs, flags) {
   old_log = console.log;
   const output = document.getElementById("output");
@@ -34,16 +36,21 @@ location.search
     params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
   });
 
-if (params !== {}) {
-  if (Object.keys(params).includes("code")) {
-    document.getElementById("code").value = params["code"];
-  }
-  if (Object.keys(params).includes("input")) {
-    document.getElementById("input").value = params["input"];
-  }
-  if (Object.keys(params).includes("flags")) {
-    document.getElementById("flags").value = params["flags"];
-  }
+let flag = false;
+if (Object.keys(params).includes("code")) {
+  flag = true;
+  document.getElementById("code").value = params["code"];
+}
+if (Object.keys(params).includes("input")) {
+  flag = true;
+  document.getElementById("input").value = params["input"];
+}
+if (Object.keys(params).includes("flags")) {
+  flag = true;
+  document.getElementById("flags").value = params["flags"];
+}
+
+if (flag === true) {
   button_clicked();
 }
 
@@ -80,4 +87,12 @@ function adjustTextareaHeight() {
   textarea.style.height = textarea.scrollHeight + 'px';
 }
 
+function getBytecount() {
+  // TODO: make accurate
+  bytecount.innerText = '' + document.getElementById("code").value.length;
+}
+
+getBytecount();
+
 document.getElementById("input").addEventListener("input", adjustTextareaHeight);
+document.getElementById("code").addEventListener("input", getBytecount);
