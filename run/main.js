@@ -2,6 +2,8 @@ var running = false;
 
 const bytecount = document.getElementById("bytecount");
 
+var old_log;
+
 async function run(code, inputs, flags) {
   old_log = console.log;
   const output = document.getElementById("output");
@@ -82,8 +84,16 @@ async function get_link() {
 }
 
 function getBytecount() {
-  // TODO: make accurate
-  bytecount.innerText = '' + document.getElementById("code").value.length;
+  let code = document.getElementById("code");
+  let utf8 = document.getElementById("utf8");
+  const code_page = [161, 162, 163, 164, 165, 166, 169, 172, 174, 181, 189, 191, 8364, 198, 199, 208, 209, 215, 216, 338, 222, 223, 230, 231, 240, 305, 567, 241, 247, 248, 339, 254, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 182, 176, 185, 178, 179, 8308, 8309, 8310, 8311, 8312, 8313, 8314, 8315, 8316, 8317, 8318, 385, 391, 394, 401, 403, 408, 11374, 413, 420, 428, 434, 548, 595, 392, 599, 402, 608, 614, 409, 625, 626, 421, 672, 636, 642, 429, 651, 549, 7840, 7684, 7692, 7864, 7716, 7882, 7730, 7734, 7746, 7750, 7884, 7770, 7778, 7788, 7908, 7806, 7816, 7924, 7826, 550, 7682, 266, 7690, 278, 7710, 288, 7714, 304, 319, 7744, 7748, 558, 7766, 7768, 7776, 7786, 7814, 7818, 7822, 379, 7841, 7685, 7693, 7865, 7717, 7883, 7731, 7735, 7747, 7751, 7885, 7771, 7779, 7789, 167, 196, 7817, 7925, 7827, 551, 7683, 267, 7691, 279, 7711, 289, 7715, 320, 7745, 7749, 559, 7767, 7769, 7777, 7787, 7815, 7819, 7823, 380, 171, 187, 8216, 8217, 8220, 8221];
+  if ([...code.value].every(c => [...code_page].includes(c.charCodeAt(0)))) {
+    utf8.innerText = '';
+    bytecount.innerText = '' + code.value.length;
+  } else {
+    utf8.innerText = '(UTF-8)';
+    bytecount.innerText = '' + (new TextEncoder().encode(code.value)).length;
+  }
 }
 
 function adjustTextareaHeight1() {
