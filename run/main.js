@@ -83,6 +83,29 @@ async function get_link() {
   svg.innerHTML = old;
 }
 
+async function get_cgcc_post() {
+  const code = document.getElementById("code").value;
+  const input = document.getElementById("input").value;
+  const flags = document.getElementById("flags").value;
+  const plural = document.getElementById("plural").value;
+  let url =
+    "https://Not-Thonnu.github.io/run?code=" +
+    encodeURIComponent(code) + "&input=" + 
+    encodeURIComponent(input) + "&flags=" +
+    encodeURIComponent(flags);
+  flags_md = flags !== "" ? " `" + flags + "`" : "";
+  let cgcc_post =
+    "# [Thunno 2](https://github.com/Thunno/Thunno2)" + flags_md +
+    ", " + bytecount.value + " byte" + plural + "\n\n```\n" + code +
+    "\n```\n\n[Try it online!](" + url + ")"
+  navigator.clipboard.writeText(cgcc_post);
+  const cgcc = document.getElementById("cgcc");
+  old = '<input type="button" onclick="javascript:get_cgcc_post()" value="     " class="cgcc-button" />';
+  cgcc.innerHTML = "<el style='font-size: 20px; vertical-align: middle;'>Copied!</el>"
+  await new Promise(r => setTimeout(r, 1000));
+  cgcc.innerHTML = old;
+}
+
 function getBytecount() {
   let code = document.getElementById("code");
   let utf8 = document.getElementById("utf8");
