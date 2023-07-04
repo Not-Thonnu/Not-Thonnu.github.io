@@ -37,8 +37,8 @@ table th {
     color: #333333;
     border: none;
     height: 50px;
-    width: 41px;
-    background-image: url('run/run.png'); 
+    width: 50px;
+    background-image: url('run/run.svg'); 
     background-repeat: no-repeat; 
     background-position: center; 
     padding-left: 20px; 
@@ -67,6 +67,20 @@ table th {
     height: 50px;
     width: 50px;
     background-image: url('run/cgcc.svg'); 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    padding-left: 20px; 
+    background-size: cover;
+    vertical-align: top;
+}
+
+.md-button {
+    background-color: #333333;
+    color: #333333;
+    border: none;
+    height: 50px;
+    width: 75px;
+    background-image: url('run/md.svg'); 
     background-repeat: no-repeat; 
     background-position: center; 
     padding-left: 20px; 

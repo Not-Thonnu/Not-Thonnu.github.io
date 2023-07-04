@@ -106,6 +106,24 @@ async function get_cgcc_post() {
   cgcc.innerHTML = old;
 }
 
+async function get_markdown() {
+  const code = document.getElementById("code").value;
+  const input = document.getElementById("input").value;
+  const flags = document.getElementById("flags").value;
+  let url =
+    "https://Not-Thonnu.github.io/run?code=" +
+    encodeURIComponent(code) + "&input=" + 
+    encodeURIComponent(input) + "&flags=" +
+    encodeURIComponent(flags);
+  let markdown = "[Try it online!](" + url + ")";
+  navigator.clipboard.writeText(markdown);
+  const md = document.getElementById("md");
+  old = '<input type="button" onclick="javascript:get_markdown()" value="     " class="md-button" />';
+  md.innerHTML = "<el style='font-size: 20px; vertical-align: middle;'>Copied!</el>"
+  await new Promise(r => setTimeout(r, 1000));
+  md.innerHTML = old;
+}
+
 function getBytecount() {
   let code = document.getElementById("code");
   let utf8 = document.getElementById("utf8");
