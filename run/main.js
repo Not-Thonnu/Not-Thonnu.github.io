@@ -87,7 +87,7 @@ async function get_cgcc_post() {
   const code = document.getElementById("code").value;
   const input = document.getElementById("input").value;
   const flags = document.getElementById("flags").value;
-  const plural = document.getElementById("plural").value;
+  const plural = document.getElementById("plural").innerText;
   let url =
     "https://Not-Thonnu.github.io/run?code=" +
     encodeURIComponent(code) + "&input=" + 
@@ -96,7 +96,7 @@ async function get_cgcc_post() {
   flags_md = flags !== "" ? " `" + flags + "`" : "";
   let cgcc_post =
     "# [Thunno 2](https://github.com/Thunno/Thunno2)" + flags_md +
-    ", " + bytecount.value + " byte" + plural + "\n\n```\n" + code +
+    ", " + bytecount.innerText + " byte" + plural + "\n\n```\n" + code +
     "\n```\n\n[Try it online!](" + url + ")"
   navigator.clipboard.writeText(cgcc_post);
   const cgcc = document.getElementById("cgcc");
