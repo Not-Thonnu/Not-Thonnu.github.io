@@ -112,7 +112,7 @@ async function get_cgcc_post() {
   const flags = document.getElementById("flags").value;
   flags_md = flags !== "" ? " `" + flags + "`" : "";
   const code = document.getElementById("code").value;
-  const plural = document.getElementById("plural").value;
+  const plural = document.getElementById("plural").innerText;
   let cgcc_post =
     "# [Thunno 2](https://github.com/Thunno/Thunno2)" + flags_md +
     ", " + bytecount.innerText + " [byte" + plural + 
@@ -142,7 +142,7 @@ async function get_cmc() {
   const flags = document.getElementById("flags").value;
   flags_md = flags !== "" ? " `" + flags + "`" : "";
   const code = document.getElementById("code").value;
-  const plural = document.getElementById("plural").value;
+  const plural = document.getElementById("plural").innerText;
   let cmc_text = "Thunno 2" + flags_md + ", " + bytecount.innerText + 
     " byte" + plural + ": [" + code + "](" + url + ")";
   navigator.clipboard.writeText(cmc_text);
