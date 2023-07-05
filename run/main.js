@@ -77,7 +77,6 @@ function button_clicked() {
     }
     const input = document.getElementById("input").value;
     const flags = document.getElementById("flags").value;
-    old_log(header + code + footer);
     run(header + code + footer, input, flags);
   }
 }
@@ -95,7 +94,6 @@ function generate_link() {
     encodeURIComponent(footer) + "&input=" +
     encodeURIComponent(input) + "&flags=" +
     encodeURIComponent(flags);
-  old_log(str);
   return str;
 }
 
