@@ -2,10 +2,9 @@ var running = false;
 
 const bytecount = document.getElementById("bytecount");
 
-var old_log;
+const old_log = console.log;
 
 async function run(code, inputs, flags) {
-  old_log = console.log;
   const output = document.getElementById("output");
   output.innerText = "Running...";
   let i = 0
@@ -39,9 +38,17 @@ location.search
   });
 
 let flag = false;
+if (Object.keys(params).includes("header")) {
+  flag = true;
+  document.getElementById("header").value = params["header"];
+}
 if (Object.keys(params).includes("code")) {
   flag = true;
   document.getElementById("code").value = params["code"];
+}
+if (Object.keys(params).includes("footer")) {
+  flag = true;
+  document.getElementById("footer").value = params["footer"];
 }
 if (Object.keys(params).includes("input")) {
   flag = true;
@@ -59,22 +66,41 @@ if (flag === true) {
 function button_clicked() {
   if (running === false) {
     running = true;
+    let header = document.getElementById("header").value;
+    if (header !== "") {
+        header += "\n";
+    }
     const code = document.getElementById("code").value;
+    let footer = document.getElementById("footer").value;
+    if (footer !== "") {
+        footer = "\n" + footer;
+    }
     const input = document.getElementById("input").value;
     const flags = document.getElementById("flags").value;
-    run(code, input, flags);
+    old_log(header + code + footer);
+    run(header + code + footer, input, flags);
   }
 }
 
-async function get_link() {
+function generate_link() {
+  const header = document.getElementById("header").value;
   const code = document.getElementById("code").value;
+  const footer = document.getElementById("footer").value;
   const input = document.getElementById("input").value;
   const flags = document.getElementById("flags").value;
-  let url =
-    "https://Not-Thonnu.github.io/run?code=" +
-    encodeURIComponent(code) + "&input=" + 
+  let str =
+    "https://Not-Thonnu.github.io/run?header=" +
+    encodeURIComponent(header) + "&code=" +
+    encodeURIComponent(code) + "&footer=" +
+    encodeURIComponent(footer) + "&input=" +
     encodeURIComponent(input) + "&flags=" +
     encodeURIComponent(flags);
+  old_log(str);
+  return str;
+}
+
+async function get_link() {
+  let url = generate_link();
   navigator.clipboard.writeText(url);
   const svg = document.getElementById("svg");
   old = '<input type="button" onclick="javascript:get_link()" value="     " class="link-button" />';
@@ -84,15 +110,8 @@ async function get_link() {
 }
 
 async function get_cgcc_post() {
-  const code = document.getElementById("code").value;
-  const input = document.getElementById("input").value;
+  let url = generate_link();
   const flags = document.getElementById("flags").value;
-  const plural = document.getElementById("plural").innerText;
-  let url =
-    "https://Not-Thonnu.github.io/run?code=" +
-    encodeURIComponent(code) + "&input=" + 
-    encodeURIComponent(input) + "&flags=" +
-    encodeURIComponent(flags);
   flags_md = flags !== "" ? " `" + flags + "`" : "";
   let cgcc_post =
     "# [Thunno 2](https://github.com/Thunno/Thunno2)" + flags_md +
@@ -108,14 +127,7 @@ async function get_cgcc_post() {
 }
 
 async function get_markdown() {
-  const code = document.getElementById("code").value;
-  const input = document.getElementById("input").value;
-  const flags = document.getElementById("flags").value;
-  let url =
-    "https://Not-Thonnu.github.io/run?code=" +
-    encodeURIComponent(code) + "&input=" + 
-    encodeURIComponent(input) + "&flags=" +
-    encodeURIComponent(flags);
+  let url = generate_link();
   let markdown = "[Try it online!](" + url + ")";
   navigator.clipboard.writeText(markdown);
   const md = document.getElementById("md");
@@ -126,15 +138,8 @@ async function get_markdown() {
 }
 
 async function get_cmc() {
-  const code = document.getElementById("code").value;
-  const input = document.getElementById("input").value;
+  let url = generate_link();
   const flags = document.getElementById("flags").value;
-  const plural = document.getElementById("plural").innerText;
-  let url =
-    "https://Not-Thonnu.github.io/run?code=" +
-    encodeURIComponent(code) + "&input=" + 
-    encodeURIComponent(input) + "&flags=" +
-    encodeURIComponent(flags);
   flags_md = flags !== "" ? " `" + flags + "`" : "";
   let cmc_text = "Thunno 2" + flags_md + ", " + bytecount.innerText + 
     " byte" + plural + ": [" + code + "](" + url + ")";
@@ -184,8 +189,24 @@ function adjustTextareaHeight3() {
   getBytecount();
 }
 
+function adjustTextareaHeight4() {
+  var textarea = document.getElementById('header');
+  textarea.style.height = 'auto';
+  textarea.style.height = textarea.scrollHeight + 'px';
+  getBytecount();
+}
+
+function adjustTextareaHeight5() {
+  var textarea = document.getElementById('footer');
+  textarea.style.height = 'auto';
+  textarea.style.height = textarea.scrollHeight + 'px';
+  getBytecount();
+}
+
 getBytecount();
 
 document.getElementById("input").addEventListener("input", adjustTextareaHeight1);
 document.getElementById("flags").addEventListener("input", adjustTextareaHeight2);
 document.getElementById("code").addEventListener("input", adjustTextareaHeight3);
+document.getElementById("header").addEventListener("input", adjustTextareaHeight4);
+document.getElementById("footer").addEventListener("input", adjustTextareaHeight5);
