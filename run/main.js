@@ -28,14 +28,24 @@ run(flags, tokenise(code)[1], inputs)`);
   running = false;
 }
 
+let args = location.search.slice(1);
+let hash = location.hash.substr(1);
+
+// Base64 URL
+
+if (hash !== "") {
+  try {
+    args = atob(hash);
+  } catch {
+    old_log("Invalid Base-64: " + hash);
+  }
+}
+
 let params = {};
-location.search
-  .slice(1)
-  .split("&")
-  .forEach(function (pair) {
+args.split("&").forEach(function (pair) {
     pair = pair.split("=");
     params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
-  });
+});
 
 let flag = false;
 if (Object.keys(params).includes("header")) {
@@ -87,13 +97,23 @@ function generate_link() {
   const footer = document.getElementById("footer").value;
   const input = document.getElementById("input").value;
   const flags = document.getElementById("flags").value;
+  /* LEGACY:
   let str =
     "https://Not-Thonnu.github.io/run?header=" +
     encodeURIComponent(header) + "&code=" +
     encodeURIComponent(code) + "&footer=" +
     encodeURIComponent(footer) + "&input=" +
     encodeURIComponent(input) + "&flags=" +
-    encodeURIComponent(flags);
+    encodeURIComponent(flags); */
+  let str =
+    "https://Not-Thonnu.github.io/run#" +
+    btoa(
+        "?header=" + encodeURIComponent(header) + 
+        "&code=" + encodeURIComponent(code) + 
+        "&footer=" + encodeURIComponent(footer) + 
+        "&input=" + encodeURIComponent(input) + 
+        "&flags=" + encodeURIComponent(flags)
+    );
   return str;
 }
 
