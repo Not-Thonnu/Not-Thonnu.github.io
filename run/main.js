@@ -232,3 +232,9 @@ document.getElementById("flags").addEventListener("input", adjustTextareaHeight2
 document.getElementById("code").addEventListener("input", adjustTextareaHeight3);
 document.getElementById("header").addEventListener("input", adjustTextareaHeight4);
 document.getElementById("footer").addEventListener("input", adjustTextareaHeight5);
+
+adjustTextareaHeight1();
+adjustTextareaHeight2();
+adjustTextareaHeight3();
+adjustTextareaHeight4();
+adjustTextareaHeight5();
