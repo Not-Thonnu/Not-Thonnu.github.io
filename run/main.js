@@ -376,10 +376,6 @@ if (Object.keys(params).includes("flags")) {
   document.getElementById("flags").value = params["flags"];
 }
 
-if (flag === true) {
-  button_clicked();
-}
-
 function button_clicked() {
   if (running === false) {
     running = true;
@@ -561,7 +557,8 @@ function adjustVerboseMode() {
     
   let result = out1.join("");
     
-  document.getElementById("verbose").innerText = result + "\n\n";
+  document.getElementById("verbose").innerText = result;
+  document.getElementById("padding").innerText = "\n\n";
     
   let utf8 = document.getElementById("utf8");
   let plural = document.getElementById("plural");
@@ -590,6 +587,7 @@ function adjustTextareaHeight2() { // flags
     adjustVerboseMode();
   } else {
     document.getElementById("verbose").innerText = "";
+    document.getElementById("padding").innerText = "";
     getBytecount();
   }
 }
@@ -602,6 +600,7 @@ function adjustTextareaHeight3() { // code
     adjustVerboseMode();
   } else {
     document.getElementById("verbose").innerText = "";
+    document.getElementById("padding").innerText = "";
     getBytecount();
   }
 }
@@ -610,14 +609,12 @@ function adjustTextareaHeight4() { // header
   var textarea = document.getElementById('header');
   textarea.style.height = 'auto';
   textarea.style.height = textarea.scrollHeight + 'px';
-  getBytecount();
 }
 
 function adjustTextareaHeight5() { // footer
   var textarea = document.getElementById('footer');
   textarea.style.height = 'auto';
   textarea.style.height = textarea.scrollHeight + 'px';
-  getBytecount();
 }
 
 getBytecount();
@@ -633,3 +630,7 @@ adjustTextareaHeight2();
 adjustTextareaHeight3();
 adjustTextareaHeight4();
 adjustTextareaHeight5();
+
+if (flag === true) {
+  button_clicked();
+}
