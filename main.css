@@ -121,9 +121,14 @@ a {
 }
 
 textarea {
-  resize: none;
+    resize: none;
 }
 
 #bytecount {
     font-size: 25px;
+}
+
+.wrap {
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }

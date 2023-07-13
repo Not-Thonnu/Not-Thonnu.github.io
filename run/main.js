@@ -331,7 +331,8 @@ async function run(code, inputs, flags) {
   await pyodide.runPython("code = " + JSON.stringify(code) + "; inputs = " + JSON.stringify(inputs) + "; flags = " + JSON.stringify(flags) + `
 from thunno2.flags import run
 from thunno2.lexer import tokenise
-run(flags, tokenise(code)[1], inputs)`);
+run(flags, tokenise(code)[1], inputs)
+print()`);
   running = false;
 }
 
