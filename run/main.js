@@ -429,8 +429,8 @@ async function get_link() {
   let url = generate_link();
   navigator.clipboard.writeText(url);
   const svg = document.getElementById("svg");
-  old = '<input type="button" onclick="javascript:get_link()" value="     " class="link-button" />';
-  svg.innerHTML = "<el style='font-size: 20px; vertical-align: middle;'>Copied!</el>"
+  let old = '<input type="button" onclick="javascript:get_link()" value="     " class="link-button" />';
+  svg.innerHTML = '<input type="button" value="     " class="done-button" style="width: 65px;" />'
   await new Promise(r => setTimeout(r, 1000));
   svg.innerHTML = old;
 }
@@ -451,8 +451,8 @@ async function get_cgcc_post() {
     code + "\n```\n\n[Try it online!](" + url + ")";
   navigator.clipboard.writeText(cgcc_post);
   const cgcc = document.getElementById("cgcc");
-  old = '<input type="button" onclick="javascript:get_cgcc_post()" value="     " class="cgcc-button" />';
-  cgcc.innerHTML = "<el style='font-size: 20px; vertical-align: middle;'>Copied!</el>"
+  let old = '<input type="button" onclick="javascript:get_cgcc_post()" value="     " class="cgcc-button" />';
+  cgcc.innerHTML = '<input type="button" value="     " class="done-button" style="width: 50px;" />'
   await new Promise(r => setTimeout(r, 1000));
   cgcc.innerHTML = old;
 }
@@ -462,8 +462,8 @@ async function get_markdown() {
   let markdown = "[Try it online!](" + url + ")";
   navigator.clipboard.writeText(markdown);
   const md = document.getElementById("md");
-  old = '<input type="button" onclick="javascript:get_markdown()" value="     " class="md-button" />';
-  md.innerHTML = "<el style='font-size: 20px; vertical-align: middle;'>Copied!</el>"
+  let old = '<input type="button" onclick="javascript:get_markdown()" value="     " class="md-button" />';
+  md.innerHTML = '<input type="button" value="     " class="done-button" style="width: 65px;" />'
   await new Promise(r => setTimeout(r, 1000));
   md.innerHTML = old;
 }
@@ -481,8 +481,8 @@ async function get_cmc() {
     " byte" + plural + ": [" + code + "](" + url + ")";
   navigator.clipboard.writeText(cmc_text);
   const cmc = document.getElementById("cmc");
-  old = '<input type="button" onclick="javascript:get_cmc()" value="     " class="cmc-button" />';
-  cmc.innerHTML = "<el style='font-size: 20px; vertical-align: middle;'>Copied!</el>"
+  let old = '<input type="button" onclick="javascript:get_cmc()" value="     " class="cmc-button" />';
+  cmc.innerHTML = '<input type="button" value="     " class="done-button" style="width: 55px;" />'
   await new Promise(r => setTimeout(r, 1000));
   cmc.innerHTML = old;
 }
