@@ -390,7 +390,7 @@ function change (s) {
         out1[x] +
         " ".repeat(after) +
         "  # " +
-        uppercaseFirstLetter(arr[x].replace("_", " ")) +
+        uppercaseFirstLetter(arr[x].replaceAll("_", " ")) +
         "\n";
     }
   }

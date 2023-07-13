@@ -348,6 +348,8 @@ if (hash !== "") {
   }
 }
 
+console.log(args);
+
 let params = {};
 args.split("&").forEach(function (pair) {
     pair = pair.split("=");
@@ -414,7 +416,7 @@ function generate_link() {
   let str =
     "https://Not-Thonnu.github.io/run#" +
     btoa(
-        "?header=" + encodeURIComponent(header) + 
+        "header=" + encodeURIComponent(header) + 
         "&code=" + encodeURIComponent(code) + 
         "&footer=" + encodeURIComponent(footer) + 
         "&input=" + encodeURIComponent(input) + 
@@ -617,6 +619,18 @@ function adjustTextareaHeight5() { // footer
   textarea.style.height = textarea.scrollHeight + 'px';
 }
 
+function verbose_click() {
+  var utf8 = document.getElementById('utf8');
+  if (utf8.innerText === "(Verbose)") {
+    var real_code = document.getElementById("verbose").innerText;
+    var code = document.getElementById("code");
+    var flags = document.getElementById("flags");
+    code.value = real_code;
+    flags.value = flags.value.replaceAll("v", "");
+    adjustTextareaHeight3();
+  }
+}
+
 getBytecount();
 
 document.getElementById("input").addEventListener("input", adjustTextareaHeight1);
@@ -624,6 +638,8 @@ document.getElementById("flags").addEventListener("input", adjustTextareaHeight2
 document.getElementById("code").addEventListener("input", adjustTextareaHeight3);
 document.getElementById("header").addEventListener("input", adjustTextareaHeight4);
 document.getElementById("footer").addEventListener("input", adjustTextareaHeight5);
+
+document.getElementById("utf8").addEventListener("click", verbose_click);
 
 adjustTextareaHeight1();
 adjustTextareaHeight2();
