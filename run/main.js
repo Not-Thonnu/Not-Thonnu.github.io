@@ -632,6 +632,20 @@ function verbose_click() {
   }
 }
 
+function reset_everything() {
+  document.getElementById('code').value = "";
+  document.getElementById('header').value = "";
+  document.getElementById('footer').value = "";
+  document.getElementById('input').value = "";
+  document.getElementById('flags').value = "";
+  document.getElementById('output').innerText = "";
+  adjustTextareaHeight1();
+  adjustTextareaHeight2();
+  adjustTextareaHeight3();
+  adjustTextareaHeight4();
+  adjustTextareaHeight5();
+}
+
 getBytecount();
 
 document.getElementById("input").addEventListener("input", adjustTextareaHeight1);
@@ -641,6 +655,7 @@ document.getElementById("header").addEventListener("input", adjustTextareaHeight
 document.getElementById("footer").addEventListener("input", adjustTextareaHeight5);
 
 document.getElementById("utf8").addEventListener("click", verbose_click);
+document.getElementById("reset").addEventListener("click", reset_everything);
 
 adjustTextareaHeight1();
 adjustTextareaHeight2();
