@@ -442,8 +442,8 @@ async function get_link() {
 
 async function get_cgcc_post() {
   let url = generate_link();
-  const flags = document.getElementById("flags").value;
-  flags_md = remove_unnecessary_flags(flags !== "" ? " `" + flags + "`" : "");
+  let flags = document.getElementById("flags").value;
+  flags_md = (flags = remove_unnecessary_flags(flags)) !== "" ? " `" + flags + "`" : "";
   let code = document.getElementById("code").value;
   if (document.getElementById("flags").value.includes("v")) {
     code = document.getElementById("verbose").innerText;
@@ -475,8 +475,8 @@ async function get_markdown() {
 
 async function get_cmc() {
   let url = generate_link();
-  const flags = document.getElementById("flags").value;
-  flags_md = remove_unnecessary_flags(flags !== "" ? " `" + flags + "`" : "");
+  let flags = document.getElementById("flags").value;
+  flags_md = (flags = remove_unnecessary_flags(flags)) !== "" ? " `" + flags + "`" : "";
   let code = document.getElementById("code").value;
   if (document.getElementById("flags").value.includes("v")) {
     code = document.getElementById("verbose").innerText;
