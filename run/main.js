@@ -646,6 +646,18 @@ function reset_everything() {
   adjustTextareaHeight5();
 }
 
+document.onkeyup = function (e) {
+  if ((e.ctrlKey || e.key === "Control") && e.key === "m") {
+    var flags = document.getElementById("flags");
+    if (flags.value.includes("v")) {
+      flags.value = flags.value.replaceAll("v", "");
+    } else {
+      flags.value = "v" + flags.value;
+    }
+    adjustTextareaHeight2();
+  }
+};
+
 getBytecount();
 
 document.getElementById("input").addEventListener("input", adjustTextareaHeight1);
