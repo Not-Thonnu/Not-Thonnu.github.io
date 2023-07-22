@@ -675,6 +675,8 @@ adjustTextareaHeight3();
 adjustTextareaHeight4();
 adjustTextareaHeight5();
 
+document.getElementById("code").focus();
+
 if (flag === true) {
   button_clicked();
 }
