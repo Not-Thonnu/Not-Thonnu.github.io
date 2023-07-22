@@ -5,7 +5,7 @@ body {
 }
 
 .heading {
-    font-size: 60px;
+    font-size: 40px;
     vertical-align: text-top;
 }
 
@@ -118,6 +118,15 @@ table th {
 
 a {
     color: #cccccc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.heading-link:hover {
+    text-decoration: none;
 }
 
 textarea {
