@@ -349,26 +349,13 @@ if (hash !== "") {
   }
 }
 
+console.log(args);
+
 let params = {};
-
-// New base64
-
-try {
-  let args_array = JSON.parse(args);
-  if (args_array.length !== 5) {
-    throw new Error("No.");
-  }
-  params["header"] = "" + args_array[0];
-  params["code"] = "" + args_array[1];
-  params["footer"] = "" + args_array[2];
-  params["input"] = "" + args_array[3];
-  params["flags"] = "" + args_array[4];
-} catch {
-  args.split("&").forEach(function (pair) {
-      pair = pair.split("=");
-      params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
-  });
-}
+args.split("&").forEach(function (pair) {
+    pair = pair.split("=");
+    params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+});
 
 let flag = false;
 if (Object.keys(params).includes("header")) {
@@ -419,7 +406,7 @@ function generate_link() {
   const footer = document.getElementById("footer").value;
   const input = document.getElementById("input").value;
   const flags = document.getElementById("flags").value;
-  /* LEGACY LEGACY:
+  /* LEGACY:
   let str =
     "https://Not-Thonnu.github.io/run?header=" +
     encodeURIComponent(header) + "&code=" +
@@ -427,7 +414,6 @@ function generate_link() {
     encodeURIComponent(footer) + "&input=" +
     encodeURIComponent(input) + "&flags=" +
     encodeURIComponent(flags); */
-  /* LEGACY:
   let str =
     "https://Not-Thonnu.github.io/run#" +
     btoa(
@@ -436,11 +422,7 @@ function generate_link() {
         "&footer=" + encodeURIComponent(footer) + 
         "&input=" + encodeURIComponent(input) + 
         "&flags=" + encodeURIComponent(flags)
-    ); */
-  let str = "https://Not-Thonnu.github.io/run#" +
-    btoa(
-        JSON.stringify([header, code, footer, input, flags])
-    )
+    );
   return str;
 }
 
