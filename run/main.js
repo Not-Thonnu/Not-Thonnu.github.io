@@ -310,10 +310,12 @@ var running = false;
 const bytecount = document.getElementById("bytecount");
 
 const old_log = console.log;
+const old_warn = console.warn;
 
 async function run(code, inputs, flags) {
   const output = document.getElementById("output");
   output.innerText = "Running...";
+  document.getElementById("debug").innerText = "";
   let i = 0
   window.console.log = function(msg) {
       i += 1;
@@ -324,6 +326,10 @@ async function run(code, inputs, flags) {
         output.innerText += msg + "\n";
       }
   };
+  window.console.warn = function(s) {
+    const stderr = document.getElementById("debug");
+    stderr.innerText += s + "\n";
+  }
   let pyodide = await loadPyodide();
   await pyodide.loadPackage("micropip");
   const micropip = pyodide.pyimport("micropip");
@@ -331,7 +337,12 @@ async function run(code, inputs, flags) {
   await pyodide.runPython("code = " + JSON.stringify(code) + "; inputs = " + JSON.stringify(inputs) + "; flags = " + JSON.stringify(flags) + `
 from thunno2.flags import run
 from thunno2.lexer import tokenise
+from thunno2.autoexplanation import auto_explain
+import sys
+
 run(flags, tokenise(code)[1], inputs)
+if "e" in flags:
+  sys.stderr.write(auto_explain(code))
 print()`);
   running = false;
 }
