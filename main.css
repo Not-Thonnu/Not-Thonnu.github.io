@@ -1,5 +1,5 @@
 body {
-    background-color: #333333;
+    background-color: #404040;
     color: #dddddd;
     font-family: Georgia, serif;
 }
@@ -10,15 +10,16 @@ body {
 }
 
 .fill-width {
-    height: 30px;
+    height: 35px;
     width: 100%;
     background-color: #333333;
     color: #dddddd;
     border: none;
+    margin: 5px;
 }
 
 .button {
-    background-color: #333333;
+    background-color: #404040;
     color: #dddddd;
     border: none;
 }
@@ -33,8 +34,8 @@ table th {
 }
 
 .run-button {
-    background-color: #333333;
-    color: #333333;
+    background-color: #404040;
+    color: #404040;
     border: none;
     height: 50px;
     width: 50px;
@@ -47,8 +48,8 @@ table th {
 }
 
 .link-button {
-    background-color: #333333;
-    color: #333333;
+    background-color: #404040;
+    color: #404040;
     border: none;
     height: 50px;
     width: 65px;
@@ -61,8 +62,8 @@ table th {
 }
 
 .cgcc-button {
-    background-color: #333333;
-    color: #333333;
+    background-color: #404040;
+    color: #404040;
     border: none;
     height: 50px;
     width: 50px;
@@ -75,8 +76,8 @@ table th {
 }
 
 .md-button {
-    background-color: #333333;
-    color: #333333;
+    background-color: #404040;
+    color: #404040;
     border: none;
     height: 50px;
     width: 75px;
@@ -89,8 +90,8 @@ table th {
 }
 
 .cmc-button {
-    background-color: #333333;
-    color: #333333;
+    background-color: #404040;
+    color: #404040;
     border: none;
     height: 50px;
     width: 55px;
@@ -103,8 +104,8 @@ table th {
 }
 
 .done-button {
-    background-color: #333333;
-    color: #333333;
+    background-color: #404040;
+    color: #404040;
     border: none;
     height: 50px;
     /* width: 50px; */
@@ -131,6 +132,7 @@ a:hover {
 
 textarea {
     resize: none;
+/*    padding: 5px;*/
 }
 
 #bytecount {
