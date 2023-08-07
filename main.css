@@ -132,7 +132,8 @@ a:hover {
 
 textarea {
     resize: none;
-/*    padding: 5px;*/
+    padding: 0.5em;
+    padding-left: 1em;
 }
 
 #bytecount {

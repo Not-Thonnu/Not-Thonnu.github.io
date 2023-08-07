@@ -317,23 +317,23 @@ async function run(code, inputs, flags) {
   output.innerText = "Running...";
   document.getElementById("debug").innerText = "";
   let i = 0
-  window.console.log = function(msg) {
-      i += 1;
-      if (i == 2) {
-        output.innerText = "";
-      }
-      if (i > 2) {
-        output.innerText += msg + "\n";
-      }
+  window.console.log = function (msg) {
+    i += 1;
+    if (i == 2) {
+      output.innerText = "";
+    }
+    if (i > 2) {
+      output.innerText += msg + "\n";
+    }
   };
-  window.console.warn = function(s) {
+  window.console.warn = function (s) {
     const stderr = document.getElementById("debug");
     stderr.innerText += s + "\n";
   }
   let pyodide = await loadPyodide();
   await pyodide.loadPackage("micropip");
   const micropip = pyodide.pyimport("micropip");
-  await micropip.install("thunno2", keepgoing=true);
+  await micropip.install("thunno2", keepgoing = true);
   await pyodide.runPython("code = " + JSON.stringify(code) + "; inputs = " + JSON.stringify(inputs) + "; flags = " + JSON.stringify(flags) + `
 from thunno2.flags import run
 from thunno2.lexer import tokenise
@@ -367,8 +367,8 @@ console.log(args);
 
 let params = {};
 args.split("&").forEach(function (pair) {
-    pair = pair.split("=");
-    params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+  pair = pair.split("=");
+  params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
 });
 
 let flag = false;
@@ -398,15 +398,15 @@ function button_clicked() {
     running = true;
     let header = document.getElementById("header").value;
     if (header !== "") {
-        header += "\n";
+      header += "\n";
     }
     let code = document.getElementById("code").value;
     if (document.getElementById("flags").value.includes("v")) {
-        code = document.getElementById("verbose").innerText;
+      code = document.getElementById("verbose").innerText;
     }
     let footer = document.getElementById("footer").value;
     if (footer !== "") {
-        footer = "\n" + footer;
+      footer = "\n" + footer;
     }
     const input = document.getElementById("input").value;
     const flags = document.getElementById("flags").value;
@@ -431,11 +431,11 @@ function generate_link() {
   let str =
     "https://Not-Thonnu.github.io/run#" +
     btoa(
-        "header=" + encodeURIComponent(header) + 
-        "&code=" + encodeURIComponent(code) + 
-        "&footer=" + encodeURIComponent(footer) + 
-        "&input=" + encodeURIComponent(input) + 
-        "&flags=" + encodeURIComponent(flags)
+      "header=" + encodeURIComponent(header) +
+      "&code=" + encodeURIComponent(code) +
+      "&footer=" + encodeURIComponent(footer) +
+      "&input=" + encodeURIComponent(input) +
+      "&flags=" + encodeURIComponent(flags)
     );
   return str;
 }
@@ -465,7 +465,7 @@ async function get_cgcc_post() {
   const plural = document.getElementById("plural").innerText;
   let cgcc_post =
     "# [Thunno 2](https://github.com/Thunno/Thunno2)" + flags_md +
-    ", " + bytecount.innerText + " [byte" + plural + 
+    ", " + bytecount.innerText + " [byte" + plural +
     "](https://github.com/Thunno/Thunno2/blob/main/docs/codepage.md)\n\n```\n" +
     code + "\n```\n\n[Try it online!](" + url + ")";
   navigator.clipboard.writeText(cgcc_post);
@@ -496,7 +496,7 @@ async function get_cmc() {
     code = document.getElementById("verbose").innerText;
   }
   const plural = document.getElementById("plural").innerText;
-  let cmc_text = "Thunno 2" + flags_md + ", " + bytecount.innerText + 
+  let cmc_text = "Thunno 2" + flags_md + ", " + bytecount.innerText +
     " byte" + plural + ": [" + code + "](" + url + ")";
   navigator.clipboard.writeText(cmc_text);
   const cmc = document.getElementById("cmc");
@@ -527,7 +527,7 @@ function getBytecount() {
 
 function adjustVerboseMode() {
   let s = document.getElementById("code").value;
-    
+
   let out1 = [];
   let out2 = "";
   let arr = s.split(" ");
@@ -575,18 +575,18 @@ function adjustVerboseMode() {
       }
     }
   }
-    
+
   let result = out1.join("");
-    
+
   document.getElementById("verbose").innerText = result;
   document.getElementById("padding").innerText = "\n\n";
-    
+
   let utf8 = document.getElementById("utf8");
   let plural = document.getElementById("plural");
 
   utf8.innerText = '(Verbose)';
   bytecount.innerText = '' + result.length;
-    
+
   if (+bytecount.innerText === 1) {
     plural.innerText = '';
   } else {
