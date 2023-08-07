@@ -11,7 +11,7 @@ body {
 
 .fill-width {
     height: 35px;
-    width: 100%;
+    width: 98%;
     background-color: #333333;
     color: #dddddd;
     border: none;
@@ -132,7 +132,7 @@ a:hover {
 
 textarea {
     resize: none;
-    padding: 0.5em;
+    padding: 0.2em;
     padding-left: 1em;
 }
 
