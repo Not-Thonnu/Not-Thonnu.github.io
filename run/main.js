@@ -342,7 +342,10 @@ import sys
 
 run(flags, tokenise(code)[1], inputs)
 if "e" in flags:
+  sys.stderr.write("#### Explanation\\n\\n\`\`\`python\\n")
+  sys.stderr.write(code + "  # Implicit input\\n")
   sys.stderr.write(auto_explain(code))
+  sys.stderr.write(len(code) * " " + "  # Implicit output\\n\`\`\`\\n")
 print()`);
   running = false;
 }
@@ -666,12 +669,58 @@ document.onkeyup = function (e) {
     var flags = document.getElementById("flags");
     if (flags.value.includes("v")) {
       flags.value = flags.value.replaceAll("v", "");
+      var real_code = document.getElementById("verbose").innerText;
+      var code = document.getElementById("code");
+      code.value = real_code;
     } else {
       flags.value = "v" + flags.value;
     }
     adjustTextareaHeight2();
   }
 };
+
+function copy_input() {
+  let text = document.getElementById("input").value;
+  navigator.clipboard.writeText(text);
+}
+
+function copy_flags() {
+  let text = document.getElementById("flags").value;
+  navigator.clipboard.writeText(text);
+}
+
+function copy_code() {
+  let text = document.getElementById("code").value;
+  navigator.clipboard.writeText(text);
+}
+
+function copy_header() {
+  let text = document.getElementById("header").value;
+  navigator.clipboard.writeText(text);
+}
+
+function copy_footer() {
+  let text = document.getElementById("footer").value;
+  navigator.clipboard.writeText(text);
+}
+
+function copy_output() {
+  let text = document.getElementById("output").innerText;
+  navigator.clipboard.writeText(text);
+}
+
+function copy_debug() {
+  let text = document.getElementById("debug").innerText;
+  navigator.clipboard.writeText(text);
+}
+
+function click_to_copy(el) {
+  el.innerText += " (Click to copy)";
+}
+
+function un_click_to_copy(el) {
+  el.innerText = el.innerText.replaceAll(" (Click to copy)", "");
+}
 
 getBytecount();
 
@@ -683,6 +732,15 @@ document.getElementById("footer").addEventListener("input", adjustTextareaHeight
 
 document.getElementById("utf8").addEventListener("click", verbose_click);
 document.getElementById("reset").addEventListener("click", reset_everything);
+
+document.getElementById("input-text").addEventListener("click", copy_input);
+document.getElementById("flags-text").addEventListener("click", copy_flags);
+document.getElementById("code-text").addEventListener("click", copy_code);
+document.getElementById("header-text").addEventListener("click", copy_header);
+document.getElementById("footer-text").addEventListener("click", copy_footer);
+
+document.getElementById("output-text").addEventListener("click", copy_output);
+document.getElementById("debug-text").addEventListener("click", copy_debug);
 
 adjustTextareaHeight1();
 adjustTextareaHeight2();
