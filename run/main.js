@@ -468,6 +468,10 @@ async function get_cgcc_post() {
     ", " + bytecount.innerText + " [byte" + plural +
     "](https://github.com/Thunno/Thunno2/blob/main/docs/codepage.md)\n\n```\n" +
     code + "\n```\n\n[Try it online!](" + url + ")";
+  let debug = document.getElementById("debug").innerText;
+  if (document.getElementById("flags").value.includes("e")) {
+    cgcc_post += "\n\n" + debug;
+  }
   navigator.clipboard.writeText(cgcc_post);
   const cgcc = document.getElementById("cgcc");
   let old = '<input type="button" onclick="javascript:get_cgcc_post()" value="     " class="cgcc-button" />';
