@@ -61,7 +61,7 @@ function integer_compression(n) {
         return n + "";
     }
     if (n < 357) {
-        return String.fromCharCode(7751) + String.fromCharCode(CODEPAGE[n - 101]);
+        return String.fromCharCode(7751) + String.fromCharCode(CODEPAGE[Number(n) - 101]);
     }
     if (n < 65536) {
         return String.fromCharCode(171) + to_base(n, 256).map(i => String.fromCharCode(CODEPAGE[i])).join("");
