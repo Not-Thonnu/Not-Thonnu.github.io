@@ -11,6 +11,14 @@ function to_base(n, b) {
     return r.reverse();
 }
 
+function from_base(l, b) {
+    r = 0n;
+    for (i = 0n; i < l.length; i++) {
+        r += b**i * l[i];
+    }
+    return r;
+}
+
 function isNumeric(str) {
   if (typeof str != "string") return false // we only process strings!  
   return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
@@ -69,6 +77,33 @@ function integer_compression(n) {
     return String.fromCharCode(187) + to_base(n, 255).map(i => String.fromCharCode(CODEPAGE[i + (i > 250)])).join("") + String.fromCharCode(187);
 }
 
+function string_compression(s) {
+    const STRING = " abcdefghijklmnopqrstuvwxyz";
+    if (s === "") {
+        return '""';
+    }
+    if (s.length === 1) {
+        return "'" + s;
+    }
+    if (s.length === 2) {
+        return "`" + s;
+    }
+    if (s.length === 3) {
+        return String.fromCharCode(651) + s;
+    }
+    if (/^[a-z ]*$/.test(s)) { // Lowercase
+        let a = [...s].reverse().map(c => BigInt(STRING.indexOf(c)));
+        let b = to_base(from_base(a, 27n), 255n);
+        return String.fromCharCode(8220) + b.map(i => String.fromCharCode(CODEPAGE[i + (i > 253)])).join("") + String.fromCharCode(8220);
+    }
+    if (/^(?:[A-Z][a-z]* )*$/.test(s + " ")) { // Title case
+        let a = [...s.toLowerCase()].reverse().map(c => BigInt(STRING.indexOf(c)));
+        let b = to_base(from_base(a, 27n), 255n);
+        return String.fromCharCode(8221) + b.map(i => String.fromCharCode(CODEPAGE[i + (i > 253)])).join("") + String.fromCharCode(8221);
+    }
+    return '"' + s + '"'
+}
+
 function integer_change() {
   var textarea = document.getElementById('integer');
   textarea.style.height = 'auto';
@@ -81,4 +116,13 @@ function integer_change() {
   }
 }
 
+function string_change() {
+  var textarea = document.getElementById('string');
+  textarea.style.height = 'auto';
+  textarea.style.height = textarea.scrollHeight + 'px';
+  let out = document.getElementById("str-out");
+  out.innerText = string_compression(textarea.value);
+}
+
 document.getElementById("integer").addEventListener("input", integer_change);
+document.getElementById("string").addEventListener("input", string_change);
