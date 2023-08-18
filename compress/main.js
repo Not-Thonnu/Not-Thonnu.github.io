@@ -104,6 +104,13 @@ function string_compression(s) {
     return '"' + s + '"'
 }
 
+function list_compression(s) {
+    const CHARS = "0123456789-.,";
+    let a = [...s].reverse().map(c => BigInt(CHARS.indexOf(c)));
+    let b = to_base(from_base(a, 13n), 255n);
+    return String.fromCharCode(191) + b.map(i => String.fromCharCode(CODEPAGE[i + (i > 10)])).join("") + String.fromCharCode(191);
+}
+
 function integer_change() {
   var textarea = document.getElementById('integer');
   textarea.style.height = 'auto';
@@ -112,7 +119,7 @@ function integer_change() {
   if (isNumeric(textarea.value)) {
       out.innerText = integer_compression(eval(textarea.value + "n"));
   } else {
-      out.innerText = "";
+      out.innerText = " ";
   }
 }
 
@@ -124,5 +131,19 @@ function string_change() {
   out.innerText = string_compression(textarea.value);
 }
 
+function list_change() {
+  var textarea = document.getElementById('list');
+  textarea.style.height = 'auto';
+  textarea.style.height = textarea.scrollHeight + 'px';
+  let out = document.getElementById("list-out");
+  val = textarea.value.replaceAll(" ", "").replaceAll("[", "").replaceAll("]", "");
+  if ([...val].every(c => [..."0123456789-.,"].includes(c))) {
+      out.innerText = list_compression(val);
+  } else {
+      out.innerText = " "
+  }
+}
+
 document.getElementById("integer").addEventListener("input", integer_change);
 document.getElementById("string").addEventListener("input", string_change);
+document.getElementById("list").addEventListener("input", list_change);
