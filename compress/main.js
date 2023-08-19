@@ -105,6 +105,16 @@ function string_compression(s) {
 }
 
 function list_compression(s) {
+    if (s === "") {
+        return "]";
+    }
+    if (isNumeric(s)) {
+        return integer_compression(s);
+    }
+    let arr = s.split(",")
+    if (arr.every(s => ((i = +s) !== NaN) && (0 <= i <= 9))) {
+        return integer_compression(+arr.join("")) + "d";
+    }
     const CHARS = "0123456789-.,";
     let a = [...s].reverse().map(c => BigInt(CHARS.indexOf(c)));
     let b = to_base(from_base(a, 13n), 255n);
