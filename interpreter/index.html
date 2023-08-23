@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Thunno 2 Online Interpreter</title>
+  <link rel="stylesheet" href="../main.css">
+  <link rel="icon" type="image/png" href="../thunno_logo.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.23.3/full/pyodide.js"></script>
+</head>
+
+<body>
+  <h1 class="heading"><a href="https://github.com/Thunno/Thunno2" class="heading-link"><img src="../thunno_logo.svg"
+        width=30 alt="Thunno 2" /> Thunno 2</a>
+    <el id="reset">Online Interpreter</el> &nbsp; <input type="button" onclick="javascript:button_clicked()"
+      value="     " class="run-button" /> &nbsp; <el id="svg"><input type="button" onclick="javascript:get_link()"
+        value="     " class="link-button" /></el> &nbsp; <el id="cgcc"><input type="button"
+        onclick="javascript:get_cgcc_post()" value="     " class="cgcc-button" /></el> &nbsp; <el id="cmc"><input
+        type="button" onclick="javascript:get_cmc()" value="     " class="cmc-button" /></el> &nbsp; <el id="md"><input
+        type="button" onclick="javascript:get_markdown()" value="     " class="md-button" /></el>
+  </h1>
+  <h3 id="flags-text">Flags</h3>
+  <!-- <input type="text" id="flags" class="fill-width" size="50" /> -->
+  <code><textarea id="flags" class="fill-width" size="50"></textarea></code>
+  <h3 id="header-text">Header</h3>
+  <code><textarea id="header" class="fill-width" size="50"></textarea></code>
+  <h3><el id="code-text">Code: <code id="bytecount">0</code> byte<el id="plural">s</el></el>
+    <el id="utf8"></el>
+  </h3>
+  <!-- <input type="text" id="code" class="fill-width" size="50" /> -->
+  <code><textarea id="code" class="fill-width" size="50"></textarea></code>
+  <code id="verbose"></code>
+  <code id="padding"></code>
+  <h3 id="footer-text">Footer</h3>
+  <code><textarea id="footer" class="fill-width" size="50"></textarea></code>
+  <h3 id="input-text">Input</h3>
+  <!-- <input type="text" id="input" class="fill-width" size="50" /> -->
+  <code><textarea id="input" class="fill-width" size="50"></textarea></code>
+  <h3 id="output-text">Output <code>(copy)</code></h3>
+  <pre class="wrap"><code id="output"> </code></pre>
+  <br />
+  <h3 id="debug-text">Debug <code>(copy)</code></h3>
+  <pre class="wrap"><code id="debug"> </code></pre>
+  <script type="text/javascript">
+    window.location.replace("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+  </script>
+</body>
+
+</html>
