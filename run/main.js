@@ -313,6 +313,9 @@ const old_log = console.log;
 const old_warn = console.warn;
 
 async function run(code, inputs, flags) {
+  if (code === "thonnu") {
+    window.location.replace("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+  }
   const output = document.getElementById("output");
   output.innerText = "Running...";
   document.getElementById("debug").innerText = "";
