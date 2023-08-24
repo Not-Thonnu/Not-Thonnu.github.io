@@ -112,7 +112,7 @@ function list_compression(s) {
         return integer_compression(s);
     }
     let arr = s.split(",")
-    if (arr.every(s => ((i = +s) !== NaN) && (0 <= i <= 9))) {
+    if (arr.every(s => ((i = +s) !== NaN) && (0 <= i && i <= 9))) {
         return integer_compression(+arr.join("")) + "d";
     }
     const CHARS = "0123456789-.,";
